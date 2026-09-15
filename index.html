@@ -46,7 +46,13 @@
       margin: 0;
       padding: 0;
       min-height: 100%;
-      background: #1e3a8a;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #0f172a 110%
+        );
     }
 
 
@@ -125,7 +131,7 @@
 
     input[type="text"] {
 
-      width: 80%;
+      width: 90%;
 
       padding: 0.6rem;
 
@@ -272,7 +278,7 @@
 
 
     /*
-      Keep the title on one line
+      Keep title on one line
       on smaller iPhones
     */
 
@@ -421,7 +427,6 @@
     };
 
 
-
     function getRowCount(count) {
 
       if (count >= 161) return 10;
@@ -440,7 +445,6 @@
     }
 
 
-
     function calculateFormation() {
 
       const input =
@@ -453,18 +457,9 @@
         document.getElementById('clearButton');
 
 
-      /*
-        Only allow numbers
-      */
-
       input.value =
         input.value.replace(/[^0-9]/g, '');
 
-
-      /*
-        Show Clear button
-        only when something is entered
-      */
 
       if (input.value !== '') {
 
@@ -481,10 +476,6 @@
         parseInt(input.value);
 
 
-      /*
-        Nothing entered
-      */
-
       if (!count) {
 
         resultEl.innerHTML = '';
@@ -492,10 +483,6 @@
         return;
       }
 
-
-      /*
-        8 or fewer
-      */
 
       if (count <= 8) {
 
@@ -505,10 +492,6 @@
         return;
       }
 
-
-      /*
-        Predefined formations
-      */
 
       if (predefinedFormations[count]) {
 
@@ -523,17 +506,8 @@
       }
 
 
-      /*
-        Determine row count
-      */
-
       let rowCount;
 
-
-      /*
-        More than 194 subjects
-        = 11 rows
-      */
 
       if (count > 194) {
 
@@ -547,10 +521,6 @@
       }
 
 
-      /*
-        Invalid number
-      */
-
       if (!rowCount) {
 
         resultEl.innerText =
@@ -559,10 +529,6 @@
         return;
       }
 
-
-      /*
-        Calculate average
-      */
 
       let avg =
         count / rowCount;
@@ -581,10 +547,6 @@
       let formation = [];
 
 
-      /*
-        Build formation
-      */
-
       for (
         let i = 0;
         i < rowCount;
@@ -600,10 +562,6 @@
       }
 
 
-      /*
-        Calculate scan-ins
-      */
-
       let total =
         formation.reduce(
           (a, b) => a + b,
@@ -614,10 +572,6 @@
       let scanIns =
         count - total;
 
-
-      /*
-        Adjust formation if necessary
-      */
 
       while (
         scanIns < 0 &&
@@ -660,10 +614,6 @@
       }
 
 
-      /*
-        Display result
-      */
-
       resultEl.innerHTML =
 
         `<span class="underline">${rowCount} Rows</span>\n` +
@@ -676,11 +626,6 @@
 
     }
 
-
-
-    /*
-      Clear everything
-    */
 
     function clearFormation() {
 
@@ -700,22 +645,10 @@
 
       clearButton.style.display = 'none';
 
-
-      /*
-        Put cursor back in the field
-        without forcing the keyboard open
-      */
-
       input.focus();
 
     }
 
-
-
-    /*
-      Update formation instantly
-      as the number is typed
-    */
 
     const input =
       document.getElementById('studentCount');
@@ -726,12 +659,6 @@
       calculateFormation
     );
 
-
-
-    /*
-      Scroll logic to prevent
-      mobile keyboard bump
-    */
 
     window.scrollTo(0, 0);
 
@@ -794,4 +721,3 @@
 
 </body>
 </html>
-
