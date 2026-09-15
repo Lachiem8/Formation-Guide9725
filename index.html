@@ -34,33 +34,28 @@
     type="image/png"
   />
 
-
   <style>
-
     @import url(
       'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'
     );
 
-
-    html {
+    html,
+    body {
       margin: 0;
       padding: 0;
       min-height: 100%;
-
-      background:
-        linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #0f172a 110%
-        );
+      overscroll-behavior: none;
     }
 
+    html {
+      background: #0f172a;
+    }
 
     body {
-      margin: 0;
-
       padding-top: env(safe-area-inset-top);
       padding-bottom: env(safe-area-inset-bottom);
+      padding-left: 1rem;
+      padding-right: 1rem;
 
       background:
         linear-gradient(
@@ -69,234 +64,144 @@
           #0f172a 110%
         );
 
-      font-family: 'Montserrat', sans-serif;
+      background-attachment: fixed;
 
+      font-family: 'Montserrat', sans-serif;
       color: #f1f5f9;
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      padding-left: 1rem;
-      padding-right: 1rem;
-
       min-height: 100vh;
       min-height: 100dvh;
 
+      box-sizing: border-box;
       overflow-x: hidden;
     }
-
 
     .logo {
       width: 180px;
       max-width: 80%;
-
       margin-top: 2rem;
       margin-bottom: 2.3rem;
     }
 
-
     .container {
       background: #1e293b;
-
       border-radius: 16px;
-
       box-shadow:
         0 6px 20px rgba(0, 0, 0, 0.3);
-
       padding: 1.5rem;
-
-      width: 95%;
-
+      width: 100%;
       max-width: 560px;
-
       text-align: center;
-
       box-sizing: border-box;
     }
-
 
     h1 {
       font-weight: 700;
-
       font-size: 1.5rem;
-
       margin-bottom: 1rem;
-
       color: #60a5fa;
-
       white-space: nowrap;
     }
 
-
     input[type="text"] {
-
-      width: 100%;
-
+      width: 95%;
       padding: 0.6rem;
-
       font-size: 1rem;
-
       border: 2px solid #334155;
-
       border-radius: 8px;
-
       background: #0f172a;
-
       color: #e2e8f0;
-
       margin-bottom: 0.7rem;
-
       box-sizing: border-box;
-
       font-family: 'Montserrat', sans-serif;
-
       text-align: center;
-
       outline: none;
     }
-
 
     input[type="text"]::placeholder {
       color: #94a3b8;
     }
 
-
     input[type="text"]:focus {
       border-color: #60a5fa;
-
       background: #1e293b;
     }
 
-
     button {
-
       width: 80%;
-
       padding: 0.7rem;
-
       font-size: 1rem;
-
       background: #3b82f6;
-
       color: #fff;
-
       font-weight: 700;
-
       border: none;
-
       border-radius: 8px;
-
       cursor: pointer;
-
       font-family: 'Montserrat', sans-serif;
-
       display: block;
-
       margin-left: auto;
       margin-right: auto;
     }
-
 
     button:hover {
       background: #2563eb;
     }
 
-
-    /* Clear button */
-
     #clearButton {
-
       margin-top: 0.6rem;
-
       display: none;
     }
 
-
     pre#result {
-
       margin-top: 1.2rem;
-
       font-size: 1rem;
-
       font-weight: 700;
-
       font-family: 'Montserrat', sans-serif;
-
       white-space: pre-line;
-
       line-height: 2.5;
     }
 
-
     .underline {
-
       text-decoration: underline;
-
       color: white;
     }
 
-
     .add-to-home {
-
       margin-top: 2rem;
-
       font-size: 0.85rem;
-
       color: #cbd5e1;
-
       text-align: center;
-
       max-width: 90%;
-
       line-height: 1.6;
     }
 
-
     .add-to-home img {
-
       height: 1em;
-
       vertical-align: middle;
-
       margin: 0 4px;
     }
 
-
     footer {
-
       margin-top: 2rem;
-
       font-size: 0.75rem;
-
       color: #94a3b8;
-
       text-align: center;
-
       padding-bottom: 1rem;
     }
 
-
-    /*
-      Keep title on one line
-      on smaller iPhones
-    */
-
     @media (max-width: 430px) {
-
       h1 {
         font-size: 1.35rem;
       }
-
     }
-
   </style>
-
 </head>
 
-
 <body>
-
 
   <img
     src="Leading Image drop shadow.png"
@@ -304,11 +209,9 @@
     class="logo"
   />
 
-
   <div class="container">
 
     <h1>Group Photo Formation Tool</h1>
-
 
     <input
       type="text"
@@ -320,7 +223,6 @@
       autofocus
     />
 
-
     <button
       id="clearButton"
       onclick="clearFormation()"
@@ -328,11 +230,9 @@
       Clear
     </button>
 
-
     <pre id="result"></pre>
 
   </div>
-
 
   <div class="add-to-home">
 
@@ -341,109 +241,79 @@
     </div>
 
     <div style="margin-top: 0.25rem;">
-
       Tap the
       <strong>Share</strong>
       button
-
       <img
         src="share-icon.png"
         alt="Share icon"
       />
-
       then scroll down and tap
       <strong>"Add to Home Screen"</strong>.
-
     </div>
 
     <div style="margin-top: 0.25rem;">
-
       Tap <strong>Add</strong> in the top-right corner.
-
     </div>
 
   </div>
-
 
   <footer>
     Made by Lachlan Inns
   </footer>
 
-
-
   <script>
 
-
     const predefinedFormations = {
-
       9: [5, 4],
       10: [5, 5],
       11: [6, 5],
       12: [6, 6],
       13: [5, 4, 4],
-
       14: [5, 4, 5],
       15: [6, 5, 4],
       16: [6, 5, 5],
       17: [6, 5, 6],
-
       18: [7, 6, 5],
       19: [7, 6, 6],
       20: [7, 6, 7],
-
       21: [7, 5, 5, 4],
       22: [7, 6, 5, 4],
       23: [7, 6, 5, 5],
       24: [7, 6, 5, 6],
-
       25: [7, 6, 6, 6],
       26: [7, 6, 6, 7],
       27: [7, 6, 7, 7],
-
       28: [8, 7, 6, 7],
       29: [8, 7, 7, 7],
       30: [8, 7, 8, 7],
-
       31: [8, 7, 8, 8],
       32: [9, 8, 7, 8],
       33: [9, 8, 8, 8],
-
       34: [9, 8, 9, 8],
       35: [9, 8, 9, 9],
       36: [10, 9, 8, 9],
-
       37: [10, 9, 9, 9],
       38: [10, 9, 10, 9],
-
       39: [10, 9, 8, 7, 7],
       40: [10, 9, 8, 8, 8],
-
       41: [9, 8, 7, 8, 9],
       42: [10, 9, 8, 7, 8],
-
       43: [10, 9, 8, 8, 8],
       44: [10, 9, 8, 9, 8]
-
     };
-
 
     function getRowCount(count) {
 
       if (count >= 161) return 10;
-
       if (count >= 131) return 9;
-
       if (count >= 101) return 8;
-
       if (count >= 80) return 7;
-
       if (count >= 66) return 6;
-
       if (count >= 45) return 5;
 
       return null;
     }
-
 
     function calculateFormation() {
 
@@ -456,42 +326,28 @@
       const clearButton =
         document.getElementById('clearButton');
 
-
       input.value =
         input.value.replace(/[^0-9]/g, '');
 
-
       if (input.value !== '') {
-
         clearButton.style.display = 'block';
-
       } else {
-
         clearButton.style.display = 'none';
-
       }
-
 
       const count =
         parseInt(input.value);
 
-
       if (!count) {
-
         resultEl.innerHTML = '';
-
         return;
       }
-
 
       if (count <= 8) {
-
         resultEl.innerHTML =
           `<span class="underline">All Standing</span>`;
-
         return;
       }
-
 
       if (predefinedFormations[count]) {
 
@@ -505,21 +361,13 @@
         return;
       }
 
-
       let rowCount;
 
-
       if (count > 194) {
-
         rowCount = 11;
-
       } else {
-
-        rowCount =
-          getRowCount(count);
-
+        rowCount = getRowCount(count);
       }
-
 
       if (!rowCount) {
 
@@ -529,13 +377,11 @@
         return;
       }
 
-
       let avg =
         count / rowCount;
 
       let avgDisplay =
         avg.toFixed(2);
-
 
       let high =
         Math.round(avg);
@@ -543,9 +389,7 @@
       let low =
         high - 1;
 
-
       let formation = [];
-
 
       for (
         let i = 0;
@@ -558,9 +402,7 @@
             ? high
             : low
         );
-
       }
-
 
       let total =
         formation.reduce(
@@ -568,10 +410,8 @@
           0
         );
 
-
       let scanIns =
         count - total;
-
 
       while (
         scanIns < 0 &&
@@ -579,12 +419,9 @@
       ) {
 
         high -= 1;
-
-        low =
-          high - 1;
+        low = high - 1;
 
         formation = [];
-
 
         for (
           let i = 0;
@@ -597,9 +434,7 @@
               ? high
               : low
           );
-
         }
-
 
         total =
           formation.reduce(
@@ -607,25 +442,16 @@
             0
           );
 
-
         scanIns =
           count - total;
-
       }
 
-
       resultEl.innerHTML =
-
         `<span class="underline">${rowCount} Rows</span>\n` +
-
         `Formation: ${formation.join(' - ')}\n` +
-
         `Scan In(s): ${scanIns}\n` +
-
         `Average per row: ${avgDisplay}`;
-
     }
-
 
     function clearFormation() {
 
@@ -638,7 +464,6 @@
       const clearButton =
         document.getElementById('clearButton');
 
-
       input.value = '';
 
       resultEl.innerHTML = '';
@@ -646,60 +471,44 @@
       clearButton.style.display = 'none';
 
       input.focus();
-
     }
-
 
     const input =
       document.getElementById('studentCount');
-
 
     input.addEventListener(
       'input',
       calculateFormation
     );
 
-
     window.scrollTo(0, 0);
 
     let userManuallyScrolled = false;
 
-
     window.addEventListener(
       'scroll',
       () => {
-
         userManuallyScrolled = true;
-
       }
     );
-
 
     const scrollInterval =
       setInterval(() => {
 
         if (!userManuallyScrolled) {
-
           window.scrollTo(0, 0);
-
         } else {
-
           clearInterval(scrollInterval);
-
         }
 
       }, 100);
 
-
     input.addEventListener(
       'focus',
       () => {
-
         userManuallyScrolled = true;
-
       }
     );
-
 
     input.addEventListener(
       'blur',
@@ -715,7 +524,6 @@
 
       }
     );
-
 
   </script>
 
