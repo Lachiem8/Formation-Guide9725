@@ -20,7 +20,7 @@
     content="black-translucent"
   />
 
-  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="theme-color" content="#172554" />
 
   <link
     rel="apple-touch-icon"
@@ -36,8 +36,12 @@
 
   <style>
     @import url(
-      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'
+      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
     );
+
+    * {
+      box-sizing: border-box;
+    }
 
     html,
     body {
@@ -48,7 +52,7 @@
     }
 
     html {
-      background: #0f172a;
+      background: #0b1120;
     }
 
     body {
@@ -58,16 +62,22 @@
       padding-right: 1rem;
 
       background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(59, 130, 246, 0.35),
+          transparent 38%
+        ),
         linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #0f172a 110%
+          145deg,
+          #1e40af 0%,
+          #172554 42%,
+          #0b1120 100%
         );
 
       background-attachment: fixed;
 
       font-family: 'Montserrat', sans-serif;
-      color: #f1f5f9;
+      color: #f8fafc;
 
       display: flex;
       flex-direction: column;
@@ -76,7 +86,6 @@
       min-height: 100vh;
       min-height: 100dvh;
 
-      box-sizing: border-box;
       overflow-x: hidden;
     }
 
@@ -84,99 +93,224 @@
       width: 180px;
       max-width: 80%;
       margin-top: 2rem;
-      margin-bottom: 2.3rem;
+      margin-bottom: 2rem;
+
+      filter:
+        drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
     }
 
     .container {
-      background: #1e293b;
-      border-radius: 16px;
+      position: relative;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(30, 41, 59, 0.98),
+          rgba(15, 23, 42, 0.98)
+        );
+
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 20px;
+
       box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.3);
-      padding: 1.5rem;
+        0 18px 45px rgba(0, 0, 0, 0.32),
+        0 4px 12px rgba(0, 0, 0, 0.18);
+
+      padding: 1.6rem 1.5rem 1.5rem;
+
       width: 100%;
       max-width: 560px;
+
       text-align: center;
-      box-sizing: border-box;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+
+      top: 0;
+      left: 12%;
+      right: 12%;
+
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(96, 165, 250, 0.8),
+          transparent
+        );
+
+      border-radius: 50%;
     }
 
     h1 {
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+
       font-weight: 700;
       font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #60a5fa;
+
+      color: #bfdbfe;
+
       white-space: nowrap;
+      letter-spacing: -0.02em;
     }
 
     input[type="text"] {
       width: 95%;
-      padding: 0.6rem;
+
+      padding: 0.75rem 0.7rem;
+
       font-size: 1rem;
+      font-weight: 500;
+
       border: 2px solid #334155;
-      border-radius: 8px;
-      background: #0f172a;
+      border-radius: 10px;
+
+      background: #0b1120;
       color: #e2e8f0;
-      margin-bottom: 0.7rem;
-      box-sizing: border-box;
+
+      margin-bottom: 0.75rem;
+
       font-family: 'Montserrat', sans-serif;
       text-align: center;
+
       outline: none;
+
+      box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.25);
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
     input[type="text"]::placeholder {
       color: #94a3b8;
+      font-weight: 400;
     }
 
     input[type="text"]:focus {
       border-color: #60a5fa;
-      background: #1e293b;
+      background: #111827;
+
+      box-shadow:
+        0 0 0 3px rgba(96, 165, 250, 0.14),
+        inset 0 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     button {
       width: 80%;
-      padding: 0.7rem;
-      font-size: 1rem;
-      background: #3b82f6;
-      color: #fff;
+
+      padding: 0.75rem;
+
+      font-size: 0.95rem;
       font-weight: 700;
+
+      background:
+        linear-gradient(
+          180deg,
+          #3b82f6,
+          #2563eb
+        );
+
+      color: #fff;
+
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+
       cursor: pointer;
+
       font-family: 'Montserrat', sans-serif;
+
       display: block;
       margin-left: auto;
       margin-right: auto;
+
+      box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.28);
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
     }
 
     button:hover {
-      background: #2563eb;
+      background:
+        linear-gradient(
+          180deg,
+          #60a5fa,
+          #2563eb
+        );
+
+      box-shadow:
+        0 7px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    button:active {
+      transform: translateY(1px);
+      box-shadow:
+        0 3px 8px rgba(37, 99, 235, 0.25);
     }
 
     #clearButton {
-      margin-top: 0.6rem;
-      display: none;
+      margin-top: 0.55rem;
+
+      background:
+        rgba(71, 85, 105, 0.75);
+
+      box-shadow: none;
+
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    #clearButton:hover {
+      background: rgba(100, 116, 139, 0.9);
     }
 
     pre#result {
-      margin-top: 1.2rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.25rem;
+
       font-size: 1rem;
       font-weight: 700;
+
       font-family: 'Montserrat', sans-serif;
+
       white-space: pre-line;
-      line-height: 2.5;
+
+      line-height: 2.35;
+
+      color: #f8fafc;
     }
 
     .underline {
       text-decoration: underline;
-      color: white;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+
+      color: #93c5fd;
     }
 
     .add-to-home {
       margin-top: 2rem;
+
       font-size: 0.85rem;
       color: #cbd5e1;
+
       text-align: center;
+
       max-width: 90%;
+
       line-height: 1.6;
+    }
+
+    .add-to-home strong {
+      color: #e2e8f0;
     }
 
     .add-to-home img {
@@ -186,16 +320,24 @@
     }
 
     footer {
-      margin-top: 2rem;
+      margin-top: 1.75rem;
+
       font-size: 0.75rem;
-      color: #94a3b8;
+      color: #64748b;
+
       text-align: center;
+
       padding-bottom: 1rem;
     }
 
     @media (max-width: 430px) {
       h1 {
         font-size: 1.35rem;
+      }
+
+      .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
       }
     }
   </style>
