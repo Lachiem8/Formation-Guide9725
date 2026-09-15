@@ -63,6 +63,7 @@
       background: #0f172a;
       color: #e2e8f0;
       margin-bottom: 0.7rem;
+      box-sizing: border-box;
     }
 
     input[type="number"]::placeholder {
@@ -72,6 +73,7 @@
     input[type="number"]:focus {
       border-color: #60a5fa;
       background: #1e293b;
+      outline: none;
     }
 
     button {
@@ -84,15 +86,17 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
     }
 
     button:hover {
       background: #2563eb;
     }
 
-    /* Space between the two buttons */
+    /* Clear button */
     #clearButton {
       margin-top: 0.6rem;
+      display: none;
     }
 
     pre#result {
@@ -134,9 +138,14 @@
 
 <body>
 
-  <img src="Leading Image drop shadow.png" alt="Leading Image Logo" class="logo" />
+  <img
+    src="Leading Image drop shadow.png"
+    alt="Leading Image Logo"
+    class="logo"
+  />
 
   <div class="container">
+
     <h1>Group Photo Formation Tool</h1>
 
     <input
@@ -147,11 +156,10 @@
       min="1"
     />
 
-    <button onclick="calculateFormation()">Get Formation</button>
-
     <button id="clearButton" onclick="clearFormation()">Clear</button>
 
     <pre id="result"></pre>
+
   </div>
 
   <div class="add-to-home">
@@ -167,51 +175,110 @@
   <footer>Made by Lachlan Inns</footer>
 
   <script>
+
     const predefinedFormations = {
-      9: [5, 4], 10: [5, 5], 11: [6, 5], 12: [6, 6], 13: [5, 4, 4],
-      14: [5, 4, 5], 15: [6, 5, 4], 16: [6, 5, 5], 17: [6, 5, 6],
-      18: [7, 6, 5], 19: [7, 6, 6], 20: [7, 6, 7], 21: [7, 5, 5, 4],
-      22: [7, 6, 5, 4], 23: [7, 6, 5, 5], 24: [7, 6, 5, 6],
-      25: [7, 6, 6, 6], 26: [7, 6, 6, 7], 27: [7, 6, 7, 7],
-      28: [8, 7, 6, 7], 29: [8, 7, 7, 7], 30: [8, 7, 8, 7],
-      31: [8, 7, 8, 8], 32: [9, 8, 7, 8], 33: [9, 8, 8, 8],
-      34: [9, 8, 9, 8], 35: [9, 8, 9, 9], 36: [10, 9, 8, 9],
-      37: [10, 9, 9, 9], 38: [10, 9, 10, 9], 39: [10, 9, 8, 7, 7],
-      40: [10, 9, 8, 8, 8], 41: [9, 8, 7, 8, 9], 42: [10, 9, 8, 7, 8],
-      43: [10, 9, 8, 8, 8], 44: [10, 9, 8, 9, 8]
+      9: [5, 4],
+      10: [5, 5],
+      11: [6, 5],
+      12: [6, 6],
+      13: [5, 4, 4],
+      14: [5, 4, 5],
+      15: [6, 5, 4],
+      16: [6, 5, 5],
+      17: [6, 5, 6],
+      18: [7, 6, 5],
+      19: [7, 6, 6],
+      20: [7, 6, 7],
+      21: [7, 5, 5, 4],
+      22: [7, 6, 5, 4],
+      23: [7, 6, 5, 5],
+      24: [7, 6, 5, 6],
+      25: [7, 6, 6, 6],
+      26: [7, 6, 6, 7],
+      27: [7, 6, 7, 7],
+      28: [8, 7, 6, 7],
+      29: [8, 7, 7, 7],
+      30: [8, 7, 8, 7],
+      31: [8, 7, 8, 8],
+      32: [9, 8, 7, 8],
+      33: [9, 8, 8, 8],
+      34: [9, 8, 9, 8],
+      35: [9, 8, 9, 9],
+      36: [10, 9, 8, 9],
+      37: [10, 9, 9, 9],
+      38: [10, 9, 10, 9],
+      39: [10, 9, 8, 7, 7],
+      40: [10, 9, 8, 8, 8],
+      41: [9, 8, 7, 8, 9],
+      42: [10, 9, 8, 7, 8],
+      43: [10, 9, 8, 8, 8],
+      44: [10, 9, 8, 9, 8]
     };
 
+
     function getRowCount(count) {
+
       if (count >= 161) return 10;
       if (count >= 131) return 9;
       if (count >= 101) return 8;
       if (count >= 80) return 7;
       if (count >= 66) return 6;
       if (count >= 45) return 5;
+
       return null;
     }
 
+
     function calculateFormation() {
-      const count = parseInt(document.getElementById('studentCount').value);
+
+      const input = document.getElementById('studentCount');
       const resultEl = document.getElementById('result');
+      const clearButton = document.getElementById('clearButton');
 
+      const count = parseInt(input.value);
+
+
+      // Show Clear button as soon as a number is entered
+      if (input.value !== '') {
+        clearButton.style.display = 'block';
+      } else {
+        clearButton.style.display = 'none';
+      }
+
+
+      // Nothing entered
       if (!count) {
-        resultEl.innerText = 'Please enter a valid number';
+
+        resultEl.innerHTML = '';
+
         return;
       }
 
+
+      // 8 or fewer = all standing
       if (count <= 8) {
-        resultEl.innerHTML = `<span class="underline">All Standing</span>`;
+
+        resultEl.innerHTML =
+          `<span class="underline">All Standing</span>`;
+
         return;
       }
 
+
+      // Predefined formations
       if (predefinedFormations[count]) {
+
         const formation = predefinedFormations[count];
-        resultEl.innerHTML = `<span class="underline">${formation.length} Rows</span>\nFormation: ${formation.join(' - ')}`;
+
+        resultEl.innerHTML =
+          `<span class="underline">${formation.length} Rows</span>\n` +
+          `Formation: ${formation.join(' - ')}`;
+
         return;
       }
 
-      // If number > 194, force 11 rows
+
+      // Determine row count
       let rowCount;
 
       if (count > 194) {
@@ -220,78 +287,155 @@
         rowCount = getRowCount(count);
       }
 
+
+      // Invalid number
       if (!rowCount) {
-        resultEl.innerText = 'Please enter a number between 9 and 161+';
+
+        resultEl.innerText =
+          'Please enter a number between 9 and 161+';
+
         return;
       }
 
+
       let avg = count / rowCount;
       let avgDisplay = avg.toFixed(2);
+
       let high = Math.round(avg);
       let low = high - 1;
+
       let formation = [];
 
+
       for (let i = 0; i < rowCount; i++) {
-        formation.push(i % 2 === 0 ? high : low);
+
+        formation.push(
+          i % 2 === 0 ? high : low
+        );
+
       }
 
-      let total = formation.reduce((a, b) => a + b, 0);
+
+      let total = formation.reduce(
+        (a, b) => a + b,
+        0
+      );
+
       let scanIns = count - total;
 
+
       while (scanIns < 0 && high > 1) {
+
         high -= 1;
         low = high - 1;
+
         formation = [];
 
+
         for (let i = 0; i < rowCount; i++) {
-          formation.push(i % 2 === 0 ? high : low);
+
+          formation.push(
+            i % 2 === 0 ? high : low
+          );
+
         }
 
-        total = formation.reduce((a, b) => a + b, 0);
+
+        total = formation.reduce(
+          (a, b) => a + b,
+          0
+        );
+
         scanIns = count - total;
+
       }
+
 
       resultEl.innerHTML =
         `<span class="underline">${rowCount} Rows</span>\n` +
         `Formation: ${formation.join(' - ')}\n` +
         `Scan In(s): ${scanIns}\n` +
         `Average per row: ${avgDisplay}`;
+
     }
 
-    // Clear everything and reset the site
+
+    // Clear everything
     function clearFormation() {
-      document.getElementById('studentCount').value = '';
-      document.getElementById('result').innerHTML = '';
+
+      const input =
+        document.getElementById('studentCount');
+
+      const resultEl =
+        document.getElementById('result');
+
+      const clearButton =
+        document.getElementById('clearButton');
+
+
+      input.value = '';
+
+      resultEl.innerHTML = '';
+
+      clearButton.style.display = 'none';
+
     }
+
+
+    // Update formation instantly while typing
+    const input =
+      document.getElementById('studentCount');
+
+    input.addEventListener('input', calculateFormation);
+
 
     // Scroll logic to prevent mobile keyboard bump
     window.scrollTo(0, 0);
+
     let userManuallyScrolled = false;
 
+
     window.addEventListener('scroll', () => {
+
       userManuallyScrolled = true;
+
     });
+
 
     const scrollInterval = setInterval(() => {
+
       if (!userManuallyScrolled) {
+
         window.scrollTo(0, 0);
+
       } else {
+
         clearInterval(scrollInterval);
+
       }
+
     }, 100);
 
-    const input = document.getElementById('studentCount');
 
     input.addEventListener('focus', () => {
+
       userManuallyScrolled = true;
+
     });
 
+
     input.addEventListener('blur', () => {
+
       setTimeout(() => {
+
         window.scrollTo(0, 0);
+
         userManuallyScrolled = false;
+
       }, 100);
+
     });
+
   </script>
 
 </body>
