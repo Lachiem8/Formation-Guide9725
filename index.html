@@ -58,21 +58,7 @@
       padding-left: 1rem;
       padding-right: 1rem;
 
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(59, 130, 246, 0.35),
-          transparent 38%
-        ),
-        linear-gradient(
-          145deg,
-          #1e40af 0%,
-          #172554 42%,
-          #0b1120 100%
-        );
-
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
+      background: #0b1120;
 
       font-family: 'Montserrat', sans-serif;
       color: #f8fafc;
@@ -85,20 +71,51 @@
       min-height: 100dvh;
 
       overflow-x: hidden;
-
       overscroll-behavior: none;
+
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Background extends approximately 20% beyond the page */
+    body::before {
+      content: '';
+
+      position: absolute;
+      z-index: -1;
+
+      top: -20%;
+      left: 0;
+      right: 0;
+
+      height: 140%;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(59, 130, 246, 0.35),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #1e40af 0%,
+          #172554 45%,
+          #0b1120 100%
+        );
+
+      pointer-events: none;
     }
 
     .logo {
       width: 180px;
       max-width: 80%;
+
       margin-top: 2rem;
       margin-bottom: 2rem;
 
-      filter:
-        drop-shadow(
-          0 8px 14px rgba(0, 0, 0, 0.28)
-        );
+      filter: drop-shadow(
+        0 8px 14px rgba(0, 0, 0, 0.28)
+      );
     }
 
     .container {
@@ -190,12 +207,7 @@
       outline: none;
 
       box-shadow:
-        inset 0 1px 3px rgba(
-          0,
-          0,
-          0,
-          0.25
-        );
+        inset 0 1px 3px rgba(0, 0, 0, 0.25);
 
       transition:
         border-color 0.2s ease,
@@ -214,18 +226,8 @@
       background: #111827;
 
       box-shadow:
-        0 0 0 3px rgba(
-          96,
-          165,
-          250,
-          0.14
-        ),
-        inset 0 1px 3px rgba(
-          0,
-          0,
-          0,
-          0.25
-        );
+        0 0 0 3px rgba(96, 165, 250, 0.14),
+        inset 0 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     button {
@@ -425,7 +427,7 @@
       inputmode="numeric"
       pattern="[0-9]*"
       id="studentCount"
-      placeholder="Tap to enter number of subjects"
+      placeholder="Tap here to enter number of subjects"
       autocomplete="off"
       autofocus
     />
@@ -451,22 +453,17 @@
     </div>
 
     <div style="margin-top: 0.25rem;">
-      Tap the
-      <strong>Share</strong>
-      button
+      Tap the <strong>Share</strong> button
       <img
         src="share-icon.png"
         alt="Share icon"
       />
       then scroll down and tap
-      <strong>
-        "Add to Home Screen"
-      </strong>.
+      <strong>"Add to Home Screen"</strong>.
     </div>
 
     <div style="margin-top: 0.25rem;">
-      Tap <strong>Add</strong>
-      in the top-right corner.
+      Tap <strong>Add</strong> in the top-right corner.
     </div>
 
   </div>
@@ -531,35 +528,21 @@
     function calculateFormation() {
 
       const input =
-        document.getElementById(
-          'studentCount'
-        );
+        document.getElementById('studentCount');
 
       const resultEl =
-        document.getElementById(
-          'result'
-        );
+        document.getElementById('result');
 
       const clearButton =
-        document.getElementById(
-          'clearButton'
-        );
+        document.getElementById('clearButton');
 
       input.value =
-        input.value.replace(
-          /[^0-9]/g,
-          ''
-        );
+        input.value.replace(/[^0-9]/g, '');
 
       if (input.value !== '') {
-
-        clearButton.style.display =
-          'block';
-
+        clearButton.style.display = 'block';
       } else {
-
-        clearButton.style.display =
-          'none';
+        clearButton.style.display = 'none';
       }
 
       const count =
@@ -693,34 +676,25 @@
     function clearFormation() {
 
       const input =
-        document.getElementById(
-          'studentCount'
-        );
+        document.getElementById('studentCount');
 
       const resultEl =
-        document.getElementById(
-          'result'
-        );
+        document.getElementById('result');
 
       const clearButton =
-        document.getElementById(
-          'clearButton'
-        );
+        document.getElementById('clearButton');
 
       input.value = '';
 
       resultEl.innerHTML = '';
 
-      clearButton.style.display =
-        'none';
+      clearButton.style.display = 'none';
 
       input.focus();
     }
 
     const input =
-      document.getElementById(
-        'studentCount'
-      );
+      document.getElementById('studentCount');
 
     input.addEventListener(
       'input',
@@ -729,8 +703,7 @@
 
     window.scrollTo(0, 0);
 
-    let userManuallyScrolled =
-      false;
+    let userManuallyScrolled = false;
 
     window.addEventListener(
       'scroll',
@@ -748,9 +721,7 @@
 
         } else {
 
-          clearInterval(
-            scrollInterval
-          );
+          clearInterval(scrollInterval);
         }
 
       }, 100);
