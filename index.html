@@ -43,19 +43,16 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html {
       margin: 0;
       padding: 0;
       min-height: 100%;
-      overscroll-behavior: none;
-    }
-
-    html {
       background: #0b1120;
     }
 
     body {
+      margin: 0;
+
       padding-top: env(safe-area-inset-top);
       padding-bottom: env(safe-area-inset-bottom);
       padding-left: 1rem;
@@ -74,7 +71,8 @@
           #0b1120 100%
         );
 
-      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
 
       font-family: 'Montserrat', sans-serif;
       color: #f8fafc;
@@ -87,6 +85,8 @@
       min-height: 100dvh;
 
       overflow-x: hidden;
+
+      overscroll-behavior: none;
     }
 
     .logo {
@@ -96,7 +96,9 @@
       margin-bottom: 2rem;
 
       filter:
-        drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+        drop-shadow(
+          0 8px 14px rgba(0, 0, 0, 0.28)
+        );
     }
 
     .container {
@@ -109,7 +111,13 @@
           rgba(15, 23, 42, 0.98)
         );
 
-      border: 1px solid rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(
+        148,
+        163,
+        184,
+        0.12
+      );
+
       border-radius: 20px;
 
       box-shadow:
@@ -126,6 +134,7 @@
 
     .container::before {
       content: '';
+
       position: absolute;
 
       top: 0;
@@ -155,6 +164,7 @@
       color: #bfdbfe;
 
       white-space: nowrap;
+
       letter-spacing: -0.02em;
     }
 
@@ -180,7 +190,12 @@
       outline: none;
 
       box-shadow:
-        inset 0 1px 3px rgba(0, 0, 0, 0.25);
+        inset 0 1px 3px rgba(
+          0,
+          0,
+          0,
+          0.25
+        );
 
       transition:
         border-color 0.2s ease,
@@ -195,11 +210,22 @@
 
     input[type="text"]:focus {
       border-color: #60a5fa;
+
       background: #111827;
 
       box-shadow:
-        0 0 0 3px rgba(96, 165, 250, 0.14),
-        inset 0 1px 3px rgba(0, 0, 0, 0.25);
+        0 0 0 3px rgba(
+          96,
+          165,
+          250,
+          0.14
+        ),
+        inset 0 1px 3px rgba(
+          0,
+          0,
+          0,
+          0.25
+        );
     }
 
     button {
@@ -227,11 +253,17 @@
       font-family: 'Montserrat', sans-serif;
 
       display: block;
+
       margin-left: auto;
       margin-right: auto;
 
       box-shadow:
-        0 5px 12px rgba(37, 99, 235, 0.28);
+        0 5px 12px rgba(
+          37,
+          99,
+          235,
+          0.28
+        );
 
       transition:
         transform 0.15s ease,
@@ -248,28 +280,55 @@
         );
 
       box-shadow:
-        0 7px 16px rgba(37, 99, 235, 0.35);
+        0 7px 16px rgba(
+          37,
+          99,
+          235,
+          0.35
+        );
     }
 
     button:active {
       transform: translateY(1px);
+
       box-shadow:
-        0 3px 8px rgba(37, 99, 235, 0.25);
+        0 3px 8px rgba(
+          37,
+          99,
+          235,
+          0.25
+        );
     }
 
     #clearButton {
       margin-top: 0.55rem;
 
       background:
-        rgba(71, 85, 105, 0.75);
+        rgba(
+          71,
+          85,
+          105,
+          0.75
+        );
 
       box-shadow: none;
 
-      border: 1px solid rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(
+        148,
+        163,
+        184,
+        0.15
+      );
     }
 
     #clearButton:hover {
-      background: rgba(100, 116, 139, 0.9);
+      background:
+        rgba(
+          100,
+          116,
+          139,
+          0.9
+        );
     }
 
     pre#result {
@@ -290,7 +349,9 @@
 
     .underline {
       text-decoration: underline;
+
       text-decoration-thickness: 2px;
+
       text-underline-offset: 4px;
 
       color: #93c5fd;
@@ -300,6 +361,7 @@
       margin-top: 2rem;
 
       font-size: 0.85rem;
+
       color: #cbd5e1;
 
       text-align: center;
@@ -315,7 +377,9 @@
 
     .add-to-home img {
       height: 1em;
+
       vertical-align: middle;
+
       margin: 0 4px;
     }
 
@@ -323,6 +387,7 @@
       margin-top: 1.75rem;
 
       font-size: 0.75rem;
+
       color: #64748b;
 
       text-align: center;
@@ -379,7 +444,10 @@
   <div class="add-to-home">
 
     <div>
-      📱 <strong>Add this tool to your iPhone Home Screen</strong>
+      📱
+      <strong>
+        Add this tool to your iPhone Home Screen
+      </strong>
     </div>
 
     <div style="margin-top: 0.25rem;">
@@ -391,11 +459,14 @@
         alt="Share icon"
       />
       then scroll down and tap
-      <strong>"Add to Home Screen"</strong>.
+      <strong>
+        "Add to Home Screen"
+      </strong>.
     </div>
 
     <div style="margin-top: 0.25rem;">
-      Tap <strong>Add</strong> in the top-right corner.
+      Tap <strong>Add</strong>
+      in the top-right corner.
     </div>
 
   </div>
@@ -460,34 +531,52 @@
     function calculateFormation() {
 
       const input =
-        document.getElementById('studentCount');
+        document.getElementById(
+          'studentCount'
+        );
 
       const resultEl =
-        document.getElementById('result');
+        document.getElementById(
+          'result'
+        );
 
       const clearButton =
-        document.getElementById('clearButton');
+        document.getElementById(
+          'clearButton'
+        );
 
       input.value =
-        input.value.replace(/[^0-9]/g, '');
+        input.value.replace(
+          /[^0-9]/g,
+          ''
+        );
 
       if (input.value !== '') {
-        clearButton.style.display = 'block';
+
+        clearButton.style.display =
+          'block';
+
       } else {
-        clearButton.style.display = 'none';
+
+        clearButton.style.display =
+          'none';
       }
 
       const count =
         parseInt(input.value);
 
       if (!count) {
+
         resultEl.innerHTML = '';
+
         return;
       }
 
       if (count <= 8) {
+
         resultEl.innerHTML =
           `<span class="underline">All Standing</span>`;
+
         return;
       }
 
@@ -506,9 +595,13 @@
       let rowCount;
 
       if (count > 194) {
+
         rowCount = 11;
+
       } else {
-        rowCount = getRowCount(count);
+
+        rowCount =
+          getRowCount(count);
       }
 
       if (!rowCount) {
@@ -561,7 +654,9 @@
       ) {
 
         high -= 1;
-        low = high - 1;
+
+        low =
+          high - 1;
 
         formation = [];
 
@@ -598,25 +693,34 @@
     function clearFormation() {
 
       const input =
-        document.getElementById('studentCount');
+        document.getElementById(
+          'studentCount'
+        );
 
       const resultEl =
-        document.getElementById('result');
+        document.getElementById(
+          'result'
+        );
 
       const clearButton =
-        document.getElementById('clearButton');
+        document.getElementById(
+          'clearButton'
+        );
 
       input.value = '';
 
       resultEl.innerHTML = '';
 
-      clearButton.style.display = 'none';
+      clearButton.style.display =
+        'none';
 
       input.focus();
     }
 
     const input =
-      document.getElementById('studentCount');
+      document.getElementById(
+        'studentCount'
+      );
 
     input.addEventListener(
       'input',
@@ -625,7 +729,8 @@
 
     window.scrollTo(0, 0);
 
-    let userManuallyScrolled = false;
+    let userManuallyScrolled =
+      false;
 
     window.addEventListener(
       'scroll',
@@ -638,9 +743,14 @@
       setInterval(() => {
 
         if (!userManuallyScrolled) {
+
           window.scrollTo(0, 0);
+
         } else {
-          clearInterval(scrollInterval);
+
+          clearInterval(
+            scrollInterval
+          );
         }
 
       }, 100);
