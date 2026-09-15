@@ -3,140 +3,266 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
   <title>Photo Formation Finder</title>
+
   <link rel="manifest" href="manifest.json" />
+
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Formation Tool" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+
   <meta name="theme-color" content="#1e3a8a" />
-  <link rel="apple-touch-icon" sizes="180x180" href="homescreenimage.png" />
-  <link rel="icon" href="tabicon.png" type="image/png" />
+
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="homescreenimage.png"
+  />
+
+  <link
+    rel="icon"
+    href="tabicon.png"
+    type="image/png"
+  />
+
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    @import url(
+      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'
+    );
+
 
     body {
       margin: 0;
+
       padding-top: env(safe-area-inset-top);
-      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 110%);
+
+      background:
+        linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #0f172a 110%
+        );
+
       font-family: 'Montserrat', sans-serif;
+
       color: #f1f5f9;
+
       display: flex;
       flex-direction: column;
       align-items: center;
+
       padding-left: 1rem;
       padding-right: 1rem;
+
       min-height: 100vh;
+
       overflow-x: hidden;
     }
+
 
     .logo {
       width: 180px;
       max-width: 80%;
+
       margin-top: 2rem;
       margin-bottom: 2.3rem;
     }
 
+
     .container {
       background: #1e293b;
+
       border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+      box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.3);
+
       padding: 1.5rem;
+
       width: 100%;
+
       text-align: center;
-    }
 
-    h1 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #60a5fa;
-    }
-
-    input[type="number"] {
-      width: 80%;
-      padding: 0.6rem;
-      font-size: 1rem;
-      border: 2px solid #334155;
-      border-radius: 8px;
-      background: #0f172a;
-      color: #e2e8f0;
-      margin-bottom: 0.7rem;
       box-sizing: border-box;
     }
 
-    input[type="number"]::placeholder {
-      color: #94a3b8;
+
+    h1 {
+      font-weight: 700;
+
+      font-size: 1.5rem;
+
+      margin-bottom: 1rem;
+
+      color: #60a5fa;
     }
 
-    input[type="number"]:focus {
-      border-color: #60a5fa;
-      background: #1e293b;
+
+    input[type="text"] {
+
+      width: 80%;
+
+      padding: 0.6rem;
+
+      font-size: 1rem;
+
+      border: 2px solid #334155;
+
+      border-radius: 8px;
+
+      background: #0f172a;
+
+      color: #e2e8f0;
+
+      margin-bottom: 0.7rem;
+
+      box-sizing: border-box;
+
+      font-family: 'Montserrat', sans-serif;
+
+      text-align: center;
+
       outline: none;
     }
 
-    button {
-      width: 80%;
-      padding: 0.7rem;
-      font-size: 1rem;
-      background: #3b82f6;
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
+
+    input[type="text"]::placeholder {
+      color: #94a3b8;
     }
+
+
+    input[type="text"]:focus {
+      border-color: #60a5fa;
+
+      background: #1e293b;
+    }
+
+
+    button {
+
+      width: 80%;
+
+      padding: 0.7rem;
+
+      font-size: 1rem;
+
+      background: #3b82f6;
+
+      color: #fff;
+
+      font-weight: 700;
+
+      border: none;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-family: 'Montserrat', sans-serif;
+
+      display: block;
+
+      margin-left: auto;
+      margin-right: auto;
+    }
+
 
     button:hover {
       background: #2563eb;
     }
 
+
     /* Clear button */
+
     #clearButton {
+
       margin-top: 0.6rem;
+
       display: none;
     }
 
+
     pre#result {
+
       margin-top: 1.2rem;
+
       font-size: 1rem;
+
       font-weight: 700;
+
       font-family: 'Montserrat', sans-serif;
+
       white-space: pre-line;
+
       line-height: 2.5;
     }
 
+
     .underline {
+
       text-decoration: underline;
+
       color: white;
     }
 
+
     .add-to-home {
+
       margin-top: 2rem;
+
       font-size: 0.85rem;
+
       color: #cbd5e1;
+
       text-align: center;
+
       max-width: 90%;
+
+      line-height: 1.6;
     }
 
+
     .add-to-home img {
-      height: 1.0em;
+
+      height: 1em;
+
       vertical-align: middle;
+
       margin: 0 4px;
     }
 
+
     footer {
+
       margin-top: 2rem;
+
       font-size: 0.75rem;
+
       color: #94a3b8;
+
       text-align: center;
+
+      padding-bottom: 1rem;
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
   <img
     src="Leading Image drop shadow.png"
@@ -144,109 +270,193 @@
     class="logo"
   />
 
+
   <div class="container">
 
     <h1>Group Photo Formation Tool</h1>
 
+
     <input
-      type="number"
+      type="text"
       inputmode="numeric"
+      pattern="[0-9]*"
       id="studentCount"
       placeholder="Tap to enter total number of subjects"
-      min="1"
+      autocomplete="off"
+      autofocus
     />
 
-    <button id="clearButton" onclick="clearFormation()">Clear</button>
+
+    <button
+      id="clearButton"
+      onclick="clearFormation()"
+    >
+      Clear
+    </button>
+
 
     <pre id="result"></pre>
 
   </div>
 
-  <div class="add-to-home">
-    <div>📱 To add this tool to your iPhone home screen:</div>
 
-    <div style="margin-top: 0.1rem;">
-      Tap <strong>Share</strong>
-      <img src="share-icon.png" alt="Share icon" />
-      then choose <strong>"Add to Home Screen"</strong>.
+  <div class="add-to-home">
+
+    <div>
+      📱 <strong>Add this tool to your iPhone Home Screen</strong>
     </div>
+
+    <div style="margin-top: 0.25rem;">
+
+      Tap the
+      <strong>Share</strong>
+      button
+
+      <img
+        src="share-icon.png"
+        alt="Share icon"
+      />
+
+      then scroll down and tap
+      <strong>"Add to Home Screen"</strong>.
+
+    </div>
+
+    <div style="margin-top: 0.25rem;">
+
+      Tap <strong>Add</strong> in the top-right corner.
+
+    </div>
+
   </div>
 
-  <footer>Made by Lachlan Inns</footer>
+
+  <footer>
+    Made by Lachlan Inns
+  </footer>
+
+
 
   <script>
 
+
     const predefinedFormations = {
+
       9: [5, 4],
       10: [5, 5],
       11: [6, 5],
       12: [6, 6],
       13: [5, 4, 4],
+
       14: [5, 4, 5],
       15: [6, 5, 4],
       16: [6, 5, 5],
       17: [6, 5, 6],
+
       18: [7, 6, 5],
       19: [7, 6, 6],
       20: [7, 6, 7],
+
       21: [7, 5, 5, 4],
       22: [7, 6, 5, 4],
       23: [7, 6, 5, 5],
       24: [7, 6, 5, 6],
+
       25: [7, 6, 6, 6],
       26: [7, 6, 6, 7],
       27: [7, 6, 7, 7],
+
       28: [8, 7, 6, 7],
       29: [8, 7, 7, 7],
       30: [8, 7, 8, 7],
+
       31: [8, 7, 8, 8],
       32: [9, 8, 7, 8],
       33: [9, 8, 8, 8],
+
       34: [9, 8, 9, 8],
       35: [9, 8, 9, 9],
       36: [10, 9, 8, 9],
+
       37: [10, 9, 9, 9],
       38: [10, 9, 10, 9],
+
       39: [10, 9, 8, 7, 7],
       40: [10, 9, 8, 8, 8],
+
       41: [9, 8, 7, 8, 9],
       42: [10, 9, 8, 7, 8],
+
       43: [10, 9, 8, 8, 8],
       44: [10, 9, 8, 9, 8]
+
     };
+
 
 
     function getRowCount(count) {
 
       if (count >= 161) return 10;
+
       if (count >= 131) return 9;
+
       if (count >= 101) return 8;
+
       if (count >= 80) return 7;
+
       if (count >= 66) return 6;
+
       if (count >= 45) return 5;
 
       return null;
     }
 
 
+
     function calculateFormation() {
 
-      const input = document.getElementById('studentCount');
-      const resultEl = document.getElementById('result');
-      const clearButton = document.getElementById('clearButton');
+      const input =
+        document.getElementById('studentCount');
 
-      const count = parseInt(input.value);
+      const resultEl =
+        document.getElementById('result');
+
+      const clearButton =
+        document.getElementById('clearButton');
 
 
-      // Show Clear button as soon as a number is entered
+      /*
+        Only allow numbers
+      */
+
+      input.value =
+        input.value.replace(/[^0-9]/g, '');
+
+
+      /*
+        Show Clear button
+        only when something is entered
+      */
+
       if (input.value !== '') {
+
         clearButton.style.display = 'block';
+
       } else {
+
         clearButton.style.display = 'none';
+
       }
 
 
-      // Nothing entered
+      const count =
+        parseInt(input.value);
+
+
+      /*
+        Nothing entered
+      */
+
       if (!count) {
 
         resultEl.innerHTML = '';
@@ -255,7 +465,10 @@
       }
 
 
-      // 8 or fewer = all standing
+      /*
+        8 or fewer
+      */
+
       if (count <= 8) {
 
         resultEl.innerHTML =
@@ -265,10 +478,14 @@
       }
 
 
-      // Predefined formations
+      /*
+        Predefined formations
+      */
+
       if (predefinedFormations[count]) {
 
-        const formation = predefinedFormations[count];
+        const formation =
+          predefinedFormations[count];
 
         resultEl.innerHTML =
           `<span class="underline">${formation.length} Rows</span>\n` +
@@ -278,17 +495,34 @@
       }
 
 
-      // Determine row count
+      /*
+        Determine row count
+      */
+
       let rowCount;
 
+
+      /*
+        More than 194 subjects
+        = 11 rows
+      */
+
       if (count > 194) {
+
         rowCount = 11;
+
       } else {
-        rowCount = getRowCount(count);
+
+        rowCount =
+          getRowCount(count);
+
       }
 
 
-      // Invalid number
+      /*
+        Invalid number
+      */
+
       if (!rowCount) {
 
         resultEl.innerText =
@@ -298,69 +532,128 @@
       }
 
 
-      let avg = count / rowCount;
-      let avgDisplay = avg.toFixed(2);
+      /*
+        Calculate average
+      */
 
-      let high = Math.round(avg);
-      let low = high - 1;
+      let avg =
+        count / rowCount;
+
+      let avgDisplay =
+        avg.toFixed(2);
+
+
+      let high =
+        Math.round(avg);
+
+      let low =
+        high - 1;
+
 
       let formation = [];
 
 
-      for (let i = 0; i < rowCount; i++) {
+      /*
+        Build formation
+      */
+
+      for (
+        let i = 0;
+        i < rowCount;
+        i++
+      ) {
 
         formation.push(
-          i % 2 === 0 ? high : low
+          i % 2 === 0
+            ? high
+            : low
         );
 
       }
 
 
-      let total = formation.reduce(
-        (a, b) => a + b,
-        0
-      );
+      /*
+        Calculate scan-ins
+      */
 
-      let scanIns = count - total;
+      let total =
+        formation.reduce(
+          (a, b) => a + b,
+          0
+        );
 
 
-      while (scanIns < 0 && high > 1) {
+      let scanIns =
+        count - total;
+
+
+      /*
+        Adjust formation if necessary
+      */
+
+      while (
+        scanIns < 0 &&
+        high > 1
+      ) {
 
         high -= 1;
-        low = high - 1;
+
+        low =
+          high - 1;
 
         formation = [];
 
 
-        for (let i = 0; i < rowCount; i++) {
+        for (
+          let i = 0;
+          i < rowCount;
+          i++
+        ) {
 
           formation.push(
-            i % 2 === 0 ? high : low
+            i % 2 === 0
+              ? high
+              : low
           );
 
         }
 
 
-        total = formation.reduce(
-          (a, b) => a + b,
-          0
-        );
+        total =
+          formation.reduce(
+            (a, b) => a + b,
+            0
+          );
 
-        scanIns = count - total;
+
+        scanIns =
+          count - total;
 
       }
 
 
+      /*
+        Display result
+      */
+
       resultEl.innerHTML =
+
         `<span class="underline">${rowCount} Rows</span>\n` +
+
         `Formation: ${formation.join(' - ')}\n` +
+
         `Scan In(s): ${scanIns}\n` +
+
         `Average per row: ${avgDisplay}`;
 
     }
 
 
-    // Clear everything
+
+    /*
+      Clear everything
+    */
+
     function clearFormation() {
 
       const input =
@@ -379,62 +672,95 @@
 
       clearButton.style.display = 'none';
 
+
+      /*
+        Put cursor back in the field
+        without forcing the keyboard open
+      */
+
+      input.focus();
+
     }
 
 
-    // Update formation instantly while typing
+
+    /*
+      Update formation instantly
+      as the number is typed
+    */
+
     const input =
       document.getElementById('studentCount');
 
-    input.addEventListener('input', calculateFormation);
+
+    input.addEventListener(
+      'input',
+      calculateFormation
+    );
 
 
-    // Scroll logic to prevent mobile keyboard bump
+
+    /*
+      Scroll logic to prevent
+      mobile keyboard bump
+    */
+
     window.scrollTo(0, 0);
 
     let userManuallyScrolled = false;
 
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener(
+      'scroll',
+      () => {
 
-      userManuallyScrolled = true;
-
-    });
-
-
-    const scrollInterval = setInterval(() => {
-
-      if (!userManuallyScrolled) {
-
-        window.scrollTo(0, 0);
-
-      } else {
-
-        clearInterval(scrollInterval);
+        userManuallyScrolled = true;
 
       }
-
-    }, 100);
-
-
-    input.addEventListener('focus', () => {
-
-      userManuallyScrolled = true;
-
-    });
+    );
 
 
-    input.addEventListener('blur', () => {
+    const scrollInterval =
+      setInterval(() => {
 
-      setTimeout(() => {
+        if (!userManuallyScrolled) {
 
-        window.scrollTo(0, 0);
+          window.scrollTo(0, 0);
 
-        userManuallyScrolled = false;
+        } else {
+
+          clearInterval(scrollInterval);
+
+        }
 
       }, 100);
 
-    });
+
+    input.addEventListener(
+      'focus',
+      () => {
+
+        userManuallyScrolled = true;
+
+      }
+    );
+
+
+    input.addEventListener(
+      'blur',
+      () => {
+
+        setTimeout(() => {
+
+          window.scrollTo(0, 0);
+
+          userManuallyScrolled = false;
+
+        }, 100);
+
+      }
+    );
+
 
   </script>
 
