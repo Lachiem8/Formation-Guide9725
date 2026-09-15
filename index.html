@@ -58,7 +58,21 @@
       padding-left: 1rem;
       padding-right: 1rem;
 
-      background: #0b1120;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(59, 130, 246, 0.35),
+          transparent 38%
+        ),
+        linear-gradient(
+          145deg,
+          #1e40af 0%,
+          #172554 42%,
+          #0b1120 100%
+        );
+
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
 
       font-family: 'Montserrat', sans-serif;
       color: #f8fafc;
@@ -71,49 +85,13 @@
       min-height: 100dvh;
 
       overflow-x: hidden;
+
       overscroll-behavior: none;
-
-      position: relative;
-      isolation: isolate;
-    }
-
-    /*
-      Long background layer.
-      This is deliberately much taller than the page so
-      iOS does not run out of gradient when the page grows.
-    */
-    body::before {
-      content: '';
-
-      position: absolute;
-      z-index: -1;
-
-      top: 0;
-      left: 0;
-      right: 0;
-
-      min-height: 3000px;
-
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(59, 130, 246, 0.35),
-          transparent 35%
-        ),
-        linear-gradient(
-          145deg,
-          #1e40af 0%,
-          #172554 45%,
-          #0b1120 100%
-        );
-
-      pointer-events: none;
     }
 
     .logo {
       width: 180px;
       max-width: 80%;
-
       margin-top: 2rem;
       margin-bottom: 2rem;
 
@@ -803,4 +781,3 @@
 
 </body>
 </html>
-
